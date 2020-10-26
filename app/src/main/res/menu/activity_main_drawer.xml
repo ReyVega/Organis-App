@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_usuario"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/menu_usuario" />
+        <item
+            android:id="@+id/nav_tasks"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/menu_tasks" />
+        <item
+            android:id="@+id/nav_tasksDiarias"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/menu_tasksDiarias" />
+        <item
+            android:id="@+id/nav_tasksSemanales"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/menu_tasksSemanales" />
+        <item
+            android:id="@+id/nav_tasksMensuales"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/menu_tasksMensuales" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Logout" />
+    </group>
+</menu>

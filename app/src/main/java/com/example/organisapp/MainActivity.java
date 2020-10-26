@@ -1,0 +1,58 @@
+package com.example.organisapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Menu;
+import android.widget.Button;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class MainActivity extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
+    private Button buttonLogin,
+            buttonRegistro;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_mainpage);
+
+        buttonLogin = findViewById(R.id.buttonLogin);
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLogin();
+            }
+        });
+
+        buttonRegistro = findViewById(R.id.buttonRegistro);
+        buttonRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRegistro();
+            }
+        });
+    }
+
+    public void openLogin() {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
+
+    public void openRegistro() {
+        Intent intent = new Intent(this, Registro.class);
+        startActivity(intent);
+    }
+}
