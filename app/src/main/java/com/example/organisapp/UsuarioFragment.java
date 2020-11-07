@@ -18,6 +18,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.organisapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.regex.Pattern;
+
 public class UsuarioFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,15 +53,21 @@ public class UsuarioFragment extends Fragment {
                         password.getText().toString().trim().equals("") ||
                         confirmacion.getText().toString().trim().equals(""))) {
                     if(password.getText().toString().equals(confirmacion.getText().toString())) {
-                        MainActivity.usuarioActual.setNombre(nombre.getText().toString().trim());
-                        MainActivity.usuarioActual.setApellidos(apellidos.getText().toString().trim());
-                        MainActivity.usuarioActual.setContrasena(password.getText().toString());
-                        for(int i = 0; i < MainActivity.usuarios.size(); i++) {
-                            if(MainActivity.usuarios.get(i).getID() == MainActivity.usuarioActual.getID()) {
-                                MainActivity.usuarios.set(i, MainActivity.usuarioActual);
+                        if(Pattern.compile("[0-9]").matcher(password.getText().toString()).find() &&
+                                Pattern.compile("[a-zA-Z]").matcher(password.getText().toString()).find() &&
+                                password.getText().toString().length() > 6) {
+                            MainActivity.usuarioActual.setNombre(nombre.getText().toString().trim());
+                            MainActivity.usuarioActual.setApellidos(apellidos.getText().toString().trim());
+                            MainActivity.usuarioActual.setContrasena(password.getText().toString());
+                            for(int i = 0; i < MainActivity.usuarios.size(); i++) {
+                                if(MainActivity.usuarios.get(i).getID() == MainActivity.usuarioActual.getID()) {
+                                    MainActivity.usuarios.set(i, MainActivity.usuarioActual);
+                                }
                             }
+                            Toast.makeText(getActivity().getApplicationContext(), "Datos modificados", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity().getApplicationContext(), "La contraseña debe contener al menos 7 carácteres\n y al menos un numero o letra", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(getActivity().getApplicationContext(), "Datos modificados", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();
                     }

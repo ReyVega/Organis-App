@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.regex.Pattern;
+
 public class Registro extends AppCompatActivity {
 
     private Button buttonOrganis;
@@ -33,25 +35,31 @@ public class Registro extends AppCompatActivity {
                         password.getText().toString().trim().equals("") ||
                         confirmacion.getText().toString().trim().equals(""))) {
                     if(password.getText().toString().equals(confirmacion.getText().toString())) {
-                        boolean newEmail = true;
-                        for(Usuario u : MainActivity.usuarios){
-                            if(u.getCorreo().equals(correo.getText().toString().trim())){
-                                newEmail = false;
-                                break;
+                        if(Pattern.compile("[0-9]").matcher(password.getText().toString()).find() &&
+                                Pattern.compile("[a-zA-Z]").matcher(password.getText().toString()).find() &&
+                                password.getText().toString().length() > 6) {
+                            boolean newEmail = true;
+                            for(Usuario u : MainActivity.usuarios){
+                                if(u.getCorreo().equals(correo.getText().toString().trim())){
+                                    newEmail = false;
+                                    break;
+                                }
                             }
-                        }
-                        if(newEmail){
-                            MainActivity.usuarioActual = new Usuario(
-                                    MainActivity.ID++,
-                                    nombre.getText().toString().trim(),
-                                    apellidos.getText().toString().trim(),
-                                    correo.getText().toString().trim(),
-                                    password.getText().toString().trim()
-                            );
-                            MainActivity.usuarios.add(MainActivity.usuarioActual);
-                            openOrganis();
-                        }else {
-                            Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente.", Toast.LENGTH_SHORT).show();
+                            if(newEmail){
+                                MainActivity.usuarioActual = new Usuario(
+                                        MainActivity.ID++,
+                                        nombre.getText().toString().trim(),
+                                        apellidos.getText().toString().trim(),
+                                        correo.getText().toString().trim(),
+                                        password.getText().toString().trim()
+                                );
+                                MainActivity.usuarios.add(MainActivity.usuarioActual);
+                                openOrganis();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente.", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos 7 carácteres\n y al menos un numero o letra", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida.", Toast.LENGTH_SHORT).show();
