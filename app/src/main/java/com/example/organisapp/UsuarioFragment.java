@@ -51,7 +51,15 @@ public class UsuarioFragment extends Fragment {
                         password.getText().toString().trim().equals("") ||
                         confirmacion.getText().toString().trim().equals(""))) {
                     if(password.getText().toString().equals(confirmacion.getText().toString())) {
-
+                        MainActivity.usuarioActual.setNombre(nombre.getText().toString().trim());
+                        MainActivity.usuarioActual.setApellidos(apellidos.getText().toString().trim());
+                        MainActivity.usuarioActual.setContrasena(password.getText().toString());
+                        for(int i = 0; i < MainActivity.usuarios.size(); i++) {
+                            if(MainActivity.usuarios.get(i).getID() == MainActivity.usuarioActual.getID()) {
+                                MainActivity.usuarios.set(i, MainActivity.usuarioActual);
+                            }
+                        }
+                        Toast.makeText(getActivity().getBaseContext(), "Datos modificados", Toast.LENGTH_SHORT);
                     } else {
                         Toast.makeText(getActivity().getBaseContext(), "La contraseña no coincide", Toast.LENGTH_SHORT);
                     }
