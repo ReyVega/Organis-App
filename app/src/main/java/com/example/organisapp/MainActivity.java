@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             buttonRegistro;
     public static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     public static Usuario usuarioActual;
+    public static int ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

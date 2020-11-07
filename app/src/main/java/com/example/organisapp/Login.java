@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,15 @@ public class Login extends AppCompatActivity {
         buttonOrganis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText correo = (EditText) findViewById(R.id.correoLogin);
+                EditText password = (EditText) findViewById(R.id.passwordLogin);
+
+                for(Usuario user : MainActivity.usuarios) {
+                    if(user.getCorreo().toString().trim().equals(correo.getText().toString().trim())
+                       && user.getContrasena().toString().equals(password.getText().toString())) {
+
+                    }
+                }
                 openOrganis();
             }
         });
