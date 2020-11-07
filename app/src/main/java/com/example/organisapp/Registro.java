@@ -34,38 +34,43 @@ public class Registro extends AppCompatActivity {
                         correo.getText().toString().trim().equals("") ||
                         password.getText().toString().trim().equals("") ||
                         confirmacion.getText().toString().trim().equals(""))) {
-                    if(password.getText().toString().equals(confirmacion.getText().toString())) {
-                        if(Pattern.compile("[0-9]").matcher(password.getText().toString()).find() &&
-                                Pattern.compile("[a-zA-Z]").matcher(password.getText().toString()).find() &&
-                                password.getText().toString().length() > 6) {
-                            boolean newEmail = true;
-                            for(Usuario u : MainActivity.usuarios){
-                                if(u.getCorreo().equals(correo.getText().toString().trim())){
-                                    newEmail = false;
-                                    break;
+                    if(Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").matcher(
+                                       correo.getText().toString().trim()).find()) {
+                        if(password.getText().toString().equals(confirmacion.getText().toString())) {
+                            if(Pattern.compile("[0-9]").matcher(password.getText().toString()).find() &&
+                                    Pattern.compile("[a-zA-Z]").matcher(password.getText().toString()).find() &&
+                                    password.getText().toString().length() > 6) {
+                                boolean newEmail = true;
+                                for(Usuario u : MainActivity.usuarios){
+                                    if(u.getCorreo().equals(correo.getText().toString().trim())){
+                                        newEmail = false;
+                                        break;
+                                    }
                                 }
-                            }
-                            if(newEmail){
-                                MainActivity.usuarioActual = new Usuario(
-                                        MainActivity.ID++,
-                                        nombre.getText().toString().trim(),
-                                        apellidos.getText().toString().trim(),
-                                        correo.getText().toString().trim(),
-                                        password.getText().toString().trim()
-                                );
-                                MainActivity.usuarios.add(MainActivity.usuarioActual);
-                                openOrganis();
+                                if(newEmail){
+                                    MainActivity.usuarioActual = new Usuario(
+                                            MainActivity.ID++,
+                                            nombre.getText().toString().trim(),
+                                            apellidos.getText().toString().trim(),
+                                            correo.getText().toString().trim(),
+                                            password.getText().toString().trim()
+                                    );
+                                    MainActivity.usuarios.add(MainActivity.usuarioActual);
+                                    openOrganis();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
-                                Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos 7 carácteres y al menos un numero o letra", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos 7 carácteres y al menos un numero o letra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "El correo ingresado no es válido", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
                 }
             }
         });

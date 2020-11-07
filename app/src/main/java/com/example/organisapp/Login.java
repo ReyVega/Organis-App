@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.regex.Pattern;
+
 public class Login extends AppCompatActivity {
     private Button buttonOrganis;
 
@@ -24,15 +26,24 @@ public class Login extends AppCompatActivity {
                 EditText correo = (EditText) findViewById(R.id.correoLogin);
                 EditText password = (EditText) findViewById(R.id.passwordLogin);
 
-                for(Usuario user : MainActivity.usuarios) {
-                    if(user.getCorreo().toString().trim().equals(correo.getText().toString().trim())
-                       && user.getContrasena().toString().equals(password.getText().toString())) {
-                        MainActivity.usuarioActual = user;
-                        openOrganis();
-                        return;
+                if(!(correo.getText().toString().trim().equals("") || password.getText().toString().equals(""))) {
+                    if(Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").matcher(
+                            correo.getText().toString().trim()).find()) {
+                        for(Usuario user : MainActivity.usuarios) {
+                            if(user.getCorreo().toString().trim().equals(correo.getText().toString().trim())
+                                    && user.getContrasena().toString().equals(password.getText().toString())) {
+                                MainActivity.usuarioActual = user;
+                                openOrganis();
+                                return;
+                            }
+                        }
+                        Toast.makeText(getApplicationContext(), "Credencial no encontrada", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "El correo ingresado no es válido", Toast.LENGTH_SHORT).show();
                     }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
             }
         });
     }
