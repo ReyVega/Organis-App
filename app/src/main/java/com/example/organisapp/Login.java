@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,10 +27,11 @@ public class Login extends AppCompatActivity {
                 for(Usuario user : MainActivity.usuarios) {
                     if(user.getCorreo().toString().trim().equals(correo.getText().toString().trim())
                        && user.getContrasena().toString().equals(password.getText().toString())) {
-
+                        MainActivity.usuarioActual = user;
+                        openOrganis();
                     }
                 }
-                openOrganis();
+                Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
             }
         });
     }
