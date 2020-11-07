@@ -31,9 +31,9 @@
         android:name="com.example.organisapp.TasksMensualesFragment"
         android:label="@string/menu_tasksMensuales"
         tools:layout="@layout/fragment_tasks" />
-    <fragment
+    <activity
         android:id="@+id/nav_slideshow"
-        android:name="com.example.organisapp.TasksDiariasFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_logout" />
+        android:name="com.example.organisapp.MainActivity"
+        android:label="Organis"
+        tools:layout="@layout/app_bar_main" />
 </navigation>

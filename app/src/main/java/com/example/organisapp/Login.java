@@ -29,9 +29,10 @@ public class Login extends AppCompatActivity {
                        && user.getContrasena().toString().equals(password.getText().toString())) {
                         MainActivity.usuarioActual = user;
                         openOrganis();
+                        return;
                     }
                 }
-                Toast.makeText(getApplicationContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
             }
         });
     }
