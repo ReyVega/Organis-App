@@ -70,4 +70,10 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public void addTaskDiaria(Task task){diarias.add(task);}
+
+    public void addTaskMensual(Task task){mensuales.add(task);}
+
+    public void addTaskSemanal(Task task){semanales.add(task);}
 }

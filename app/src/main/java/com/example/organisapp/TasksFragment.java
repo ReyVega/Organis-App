@@ -30,8 +30,6 @@ public class TasksFragment extends Fragment {
 
     private FloatingActionButton fab;
     private ListView lv;
-    private String[] nombre = {"Rey","Samantha"};
-    private String[] edades = {"11","10"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +52,8 @@ public class TasksFragment extends Fragment {
         lv = (ListView) getView().findViewById(R.id.st);
 
         ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(getActivity().getApplicationContext(), android.R.layout.simple_expandable_list_item_1,MainActivity.usuarioActual.getDiarias());
+        adapter.addAll(MainActivity.usuarioActual.getSemanales());
+        adapter.addAll(MainActivity.usuarioActual.getMensuales());
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
