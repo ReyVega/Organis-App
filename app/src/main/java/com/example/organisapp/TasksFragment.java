@@ -1,6 +1,7 @@
-package com.example.organisapp.ui.tasks;
+package com.example.organisapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.organisapp.R;
+import com.example.organisapp.Registro;
+import com.example.organisapp.TaskForm;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 
 public class TasksFragment extends Fragment {
 
@@ -42,20 +47,26 @@ public class TasksFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                openTaskForm();
             }
         });
 
         lv = (ListView) getView().findViewById(R.id.st);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_expandable_list_item_1, nombre);
+        ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(getActivity().getApplicationContext(), android.R.layout.simple_expandable_list_item_1,MainActivity.usuarioActual.getDiarias());
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                openTaskForm();
             }
         });
     }
+
+    public void openTaskForm() {
+        Intent intent = new Intent(getActivity(), TaskForm.class);
+        startActivity(intent);
+    }
+
 }

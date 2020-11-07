@@ -1,4 +1,4 @@
-package com.example.organisapp.ui.tasksSemanales;
+package com.example.organisapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,12 +14,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.organisapp.R;
 
-public class TasksSemanalesFragment extends Fragment {
-
+public class TasksDiariasFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_taskssemanales, container, false);
+        View root = inflater.inflate(R.layout.fragment_tasksdiarias, container, false);
         return root;
     }
 }

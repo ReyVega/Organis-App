@@ -7,33 +7,33 @@
 
     <fragment
         android:id="@+id/nav_usuario"
-        android:name="com.example.organisapp.ui.usuario.UsuarioFragment"
+        android:name="com.example.organisapp.UsuarioFragment"
         android:label="@string/menu_usuario"
         tools:layout="@layout/fragment_usuario" />
 
     <fragment
         android:id="@+id/nav_tasks"
-        android:name="com.example.organisapp.ui.tasks.TasksFragment"
+        android:name="com.example.organisapp.TasksFragment"
         android:label="@string/menu_tasks"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/nav_tasksDiarias"
-        android:name="com.example.organisapp.ui.tasksDiarias.TasksDiariasFragment"
+        android:name="com.example.organisapp.TasksDiariasFragment"
         android:label="@string/menu_tasksDiarias"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/nav_tasksSemanales"
-        android:name="com.example.organisapp.ui.tasksSemanales.TasksSemanalesFragment"
+        android:name="com.example.organisapp.TasksSemanalesFragment"
         android:label="@string/menu_tasksSemanales"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/nav_tasksMensuales"
-        android:name="com.example.organisapp.ui.tasksMensuales.TasksMensualesFragment"
+        android:name="com.example.organisapp.TasksMensualesFragment"
         android:label="@string/menu_tasksMensuales"
         tools:layout="@layout/fragment_tasks" />
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.organisapp.ui.tasksDiarias.TasksDiariasFragment"
+        android:name="com.example.organisapp.TasksDiariasFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_logout" />
 </navigation>

@@ -18,11 +18,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private Button buttonLogin,
             buttonRegistro;
+    public static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+    public static Usuario usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
