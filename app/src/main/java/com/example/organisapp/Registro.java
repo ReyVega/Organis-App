@@ -33,20 +33,31 @@ public class Registro extends AppCompatActivity {
                         password.getText().toString().trim().equals("") ||
                         confirmacion.getText().toString().trim().equals(""))) {
                     if(password.getText().toString().equals(confirmacion.getText().toString())) {
-                        MainActivity.usuarioActual = new Usuario(
-                                MainActivity.ID++,
-                                nombre.getText().toString().trim(),
-                                apellidos.getText().toString().trim(),
-                                correo.getText().toString().trim(),
-                                password.getText().toString().trim()
-                        );
-                        MainActivity.usuarios.add(MainActivity.usuarioActual);
-                        openOrganis();
+                        boolean newEmail = true;
+                        for(Usuario u : MainActivity.usuarios){
+                            if(u.getCorreo().equals(correo.getText().toString().trim())){
+                                newEmail = false;
+                                break;
+                            }
+                        }
+                        if(newEmail){
+                            MainActivity.usuarioActual = new Usuario(
+                                    MainActivity.ID++,
+                                    nombre.getText().toString().trim(),
+                                    apellidos.getText().toString().trim(),
+                                    correo.getText().toString().trim(),
+                                    password.getText().toString().trim()
+                            );
+                            MainActivity.usuarios.add(MainActivity.usuarioActual);
+                            openOrganis();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente.", Toast.LENGTH_SHORT).show();
+                        }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
