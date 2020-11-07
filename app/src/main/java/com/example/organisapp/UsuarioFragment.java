@@ -66,7 +66,7 @@ public class UsuarioFragment extends Fragment {
                             }
                             Toast.makeText(getActivity().getApplicationContext(), "Datos modificados", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getActivity().getApplicationContext(), "La contraseña debe contener al menos 7 carácteres\n y al menos un numero o letra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity().getApplicationContext(), "La contraseña debe contener al menos 7 carácteres y al menos un numero o letra", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getActivity().getApplicationContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();

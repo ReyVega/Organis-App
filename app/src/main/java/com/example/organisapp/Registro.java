@@ -59,7 +59,7 @@ public class Registro extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "El correo ingresado fue registrado previamente.", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos 7 carácteres\n y al menos un numero o letra", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "La contraseña debe contener al menos 7 carácteres y al menos un numero o letra", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), "Confirmación de contraseña inválida.", Toast.LENGTH_SHORT).show();
