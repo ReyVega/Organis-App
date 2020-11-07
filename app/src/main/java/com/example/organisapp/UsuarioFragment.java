@@ -59,12 +59,12 @@ public class UsuarioFragment extends Fragment {
                                 MainActivity.usuarios.set(i, MainActivity.usuarioActual);
                             }
                         }
-                        Toast.makeText(getActivity().getBaseContext(), "Datos modificados", Toast.LENGTH_SHORT);
+                        Toast.makeText(getActivity().getApplicationContext(), "Datos modificados", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getActivity().getBaseContext(), "La contraseña no coincide", Toast.LENGTH_SHORT);
+                        Toast.makeText(getActivity().getApplicationContext(), "La contraseña no coincide", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getActivity().getBaseContext(), "Rellenar campos faltantes", Toast.LENGTH_SHORT);
+                    Toast.makeText(getActivity().getApplicationContext(), "Rellenar campos faltantes", Toast.LENGTH_SHORT).show();
                 }
             }
         });
