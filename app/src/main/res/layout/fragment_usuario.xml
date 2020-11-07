@@ -38,7 +38,7 @@
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/confirmacionModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,11 +51,11 @@
         app:layout_constraintVertical_bias="0.79" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/passwordModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="Nueva contraseña"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
         app:layout_constraintVertical_bias="0.693" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/nombreModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -77,7 +77,7 @@
         app:layout_constraintVertical_bias="0.505" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/apellidosModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -90,7 +90,7 @@
         app:layout_constraintVertical_bias="0.598" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/botonModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirmar cambios"
