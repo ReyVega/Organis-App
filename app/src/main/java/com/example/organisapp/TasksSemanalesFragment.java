@@ -49,13 +49,18 @@ public class TasksSemanalesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-                openTaskForm();
+                openTaskFormModificar();
             }
         });
     }
 
     public void openTaskForm() {
         Intent intent = new Intent(getActivity(), TaskForm.class);
+        startActivity(intent);
+    }
+
+    public void openTaskFormModificar() {
+        Intent intent = new Intent(getActivity(), TaskFormModificar.class);
         startActivity(intent);
     }
 }
