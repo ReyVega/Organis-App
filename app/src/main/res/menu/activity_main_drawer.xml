@@ -9,10 +9,6 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/menu_usuario" />
         <item
-            android:id="@+id/nav_tasks"
-            android:icon="@android:drawable/ic_menu_today"
-            android:title="@string/menu_tasks" />
-        <item
             android:id="@+id/nav_tasksDiarias"
             android:icon="@android:drawable/ic_menu_today"
             android:title="@string/menu_tasksDiarias" />
@@ -24,6 +20,10 @@
             android:id="@+id/nav_tasksMensuales"
             android:icon="@android:drawable/ic_menu_today"
             android:title="@string/menu_tasksMensuales" />
+        <item
+            android:id="@+id/nav_tasksCompletadas"
+            android:icon="@android:drawable/ic_menu_today"
+            android:title="@string/menu_tasksCompletadas" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
