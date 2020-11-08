@@ -15,6 +15,12 @@ public class Task {
         this.hora = hora;
     }
 
+    public Task(String nombreActividad, String fecha, String hora) {
+        this.nombreActividad = nombreActividad;
+        this.fecha = fecha;
+        this.hora = hora;
+    }
+
     public String getNombreActividad() {
         return this.nombreActividad;
     }

@@ -62,7 +62,11 @@ public class TaskForm extends AppCompatActivity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                hora.setText(hourOfDay + ":" + minute);
+                                if(minute < 10) {
+                                    hora.setText(hourOfDay + ":0" + minute);
+                                } else {
+                                    hora.setText(hourOfDay + ":" + minute);
+                                }
                             }
                         }, hour,minute,android.text.format.DateFormat.is24HourFormat(TaskForm.this));
                 tm.show();

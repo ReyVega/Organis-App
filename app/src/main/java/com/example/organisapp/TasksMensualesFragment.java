@@ -42,9 +42,7 @@ public class TasksMensualesFragment extends Fragment {
 
         ListView lv = (ListView) getView().findViewById(R.id.stMensuales);
 
-        ArrayAdapter<Task> adapter = new ArrayAdapter<Task>(getActivity().getApplicationContext(), android.R.layout.simple_expandable_list_item_1,MainActivity.usuarioActual.getMensuales());
-        adapter.addAll(MainActivity.usuarioActual.getSemanales());
-        adapter.addAll(MainActivity.usuarioActual.getMensuales());
+        CustomListAdapter adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getMensuales());
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
