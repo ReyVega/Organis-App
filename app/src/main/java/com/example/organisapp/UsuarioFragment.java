@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,9 +33,11 @@ public class UsuarioFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+        TextView correo = (TextView) getView().findViewById(R.id.correoUsuario);
         EditText nombre2 = (EditText) getView().findViewById(R.id.nombreModificar);
         EditText apellidos2 = (EditText) getView().findViewById(R.id.apellidosModificar);
 
+        correo.setText(MainActivity.usuarioActual.getCorreo());
         nombre2.setText(MainActivity.usuarioActual.getNombre());
         apellidos2.setText(MainActivity.usuarioActual.getApellidos());
 
