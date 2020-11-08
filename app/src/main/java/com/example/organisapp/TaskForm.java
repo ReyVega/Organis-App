@@ -1,17 +1,23 @@
 package com.example.organisapp;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 public class TaskForm extends AppCompatActivity {
 
@@ -22,6 +28,47 @@ public class TaskForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_taskform);
 
+        final Button fecha = (Button) findViewById(R.id.fechaFinalizacion);
+
+        fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Button fecha = (Button) findViewById(R.id.fechaFinalizacion);
+                Calendar c = Calendar.getInstance();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+                DatePickerDialog dp = new DatePickerDialog(TaskForm.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int day) {
+                                fecha.setText(day + "/" + month + "/" + year);
+                            }
+                        }, year, month, day);
+                dp.show();;
+            }
+        });
+
+        final Button hora = (Button) findViewById(R.id.horaTask);
+        hora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Button hora = (Button) findViewById(R.id.horaTask);
+                Calendar c = Calendar.getInstance();
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = c.get(Calendar.MINUTE);
+                TimePickerDialog tm = new TimePickerDialog(
+                        TaskForm.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                                hora.setText(hourOfDay + ":" + minute);
+                            }
+                        }, hour,minute,android.text.format.DateFormat.is24HourFormat(TaskForm.this));
+                tm.show();
+            }
+        });
+
         this.anadir = findViewById(R.id.anadirActividad);
         this.anadir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,8 +78,7 @@ public class TaskForm extends AppCompatActivity {
                 Switch diaria = (Switch) findViewById(R.id.switchDiaria);
                 Switch semanal = (Switch) findViewById(R.id.switchSemanal);
                 Switch mensual = (Switch) findViewById(R.id.switchMensual);
-                EditText fecha = (EditText) findViewById(R.id.fechaFinalizacion);
-                EditText hora = (EditText) findViewById(R.id.horaTask);
+                Button hora = (Button) findViewById(R.id.horaTask);
 
                 if(nombreActividad.getText().toString().trim().equals("") ||
                    descripcion.getText().toString().trim().equals("") ||

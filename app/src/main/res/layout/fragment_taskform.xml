@@ -35,34 +35,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.379" />
 
-    <EditText
-        android:id="@+id/fechaFinalizacion"
-        android:layout_width="189dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="Fecha de finalización"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.252"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
-
-    <EditText
-        android:id="@+id/horaTask"
-        android:layout_width="121dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Hora"
-        android:inputType="time"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
-
     <Button
         android:id="@+id/cancelar"
         android:layout_width="wrap_content"
@@ -122,5 +94,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.552" />
+
+    <Button
+        android:id="@+id/fechaFinalizacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de finalización"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/horaTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
