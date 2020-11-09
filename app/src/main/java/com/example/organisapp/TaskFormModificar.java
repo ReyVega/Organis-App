@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -32,6 +33,7 @@ public class TaskFormModificar extends AppCompatActivity {
         final Button horaTask2 = (Button) findViewById(R.id.horaTask2);
         Button modificarActividad = (Button) findViewById(R.id.modificarActividad);
         Button eliminarActividad = (Button) findViewById(R.id.eliminarActividad);
+        final CheckBox completado = (CheckBox) findViewById(R.id.taskCompletada2);
 
         fechaFinalizacion2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,11 +101,26 @@ public class TaskFormModificar extends AppCompatActivity {
                 Task ts = new Task(nombreActividad2.getText().toString().trim(),descripcion2.getText().toString().trim(),"Alta",
                         fechaFinalizacion2.getText().toString().trim(),horaTask2.getText().toString().trim());
                 if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
-                    MainActivity.usuarioActual.getDiarias().set(position, ts);
+                    if(completado.isChecked()) {
+                        MainActivity.usuarioActual.getCompletadas().add(ts);
+                        MainActivity.usuarioActual.getDiarias().remove(position);
+                    } else {
+                        MainActivity.usuarioActual.getDiarias().set(position, ts);
+                    }
                 } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("semanal")) {
-                    MainActivity.usuarioActual.getSemanales().set(position, ts);
+                    if(completado.isChecked()) {
+                        MainActivity.usuarioActual.getCompletadas().add(ts);
+                        MainActivity.usuarioActual.getSemanales().remove(position);
+                    } else {
+                        MainActivity.usuarioActual.getSemanales().set(position, ts);
+                    }
                 } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("mensual")) {
-                    MainActivity.usuarioActual.getMensuales().set(position, ts);
+                    if(completado.isChecked()) {
+                        MainActivity.usuarioActual.getCompletadas().add(ts);
+                        MainActivity.usuarioActual.getMensuales().remove(position);
+                    } else {
+                        MainActivity.usuarioActual.getMensuales().set(position, ts);
+                    }
                 }
                 openOrganis();
             }

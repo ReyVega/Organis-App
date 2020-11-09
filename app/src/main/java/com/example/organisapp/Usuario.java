@@ -58,6 +58,10 @@ public class Usuario {
         return this.mensuales;
     }
 
+    public ArrayList<Task> getCompletadas() {
+        return this.mensuales;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

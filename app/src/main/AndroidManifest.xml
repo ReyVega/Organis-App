@@ -21,6 +21,7 @@
         <activity android:name=".Registro"></activity>
         <activity android:name=".TaskForm"></activity>
         <activity android:name=".TaskFormModificar"></activity>
+        <activity android:name=".TaskFormCompletadas"></activity>
         <activity
             android:name=".Organis"
             android:label="@string/app_name"
