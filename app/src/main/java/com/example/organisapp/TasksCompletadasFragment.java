@@ -46,11 +46,6 @@ public class TasksCompletadasFragment extends Fragment {
         });
     }
 
-    public void openTaskForm() {
-        Intent intent = new Intent(getActivity(), TaskForm.class);
-        startActivity(intent);
-    }
-
     public void openTaskFormCompletada(int position) {
         Intent intent = new Intent(getActivity(), TaskFormCompletadas.class);
         intent.putExtra("position", position);
