@@ -60,7 +60,7 @@ public class TasksMensualesFragment extends Fragment {
 
     public void openTaskFormModificar(int position) {
         Intent intent = new Intent(getActivity(), TaskFormModificar.class);
-        intent.putExtra("tipoTask","diaria");
+        intent.putExtra("tipoTask","mensual");
         intent.putExtra("position", position);
         startActivity(intent);
     }
