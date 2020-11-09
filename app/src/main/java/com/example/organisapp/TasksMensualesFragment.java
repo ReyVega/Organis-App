@@ -48,7 +48,7 @@ public class TasksMensualesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity().getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-                openTaskFormModificar();
+                openTaskFormModificar(position);
             }
         });
     }
@@ -58,8 +58,10 @@ public class TasksMensualesFragment extends Fragment {
         startActivity(intent);
     }
 
-    public void openTaskFormModificar() {
+    public void openTaskFormModificar(int position) {
         Intent intent = new Intent(getActivity(), TaskFormModificar.class);
+        intent.putExtra("tipoTask","diaria");
+        intent.putExtra("position", position);
         startActivity(intent);
     }
 }

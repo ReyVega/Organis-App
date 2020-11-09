@@ -86,11 +86,11 @@ public class TaskForm extends AppCompatActivity {
 
                 if(nombreActividad.getText().toString().trim().equals("") ||
                    descripcion.getText().toString().trim().equals("") ||
-                   fecha.getText().toString().trim().equals("") || hora.getText().toString().trim().equals("")){
+                   fecha.getText().toString().trim().equals("Fecha de finalización") || hora.getText().toString().trim().equals("Hora")){
                     Toast.makeText(getApplicationContext(), "Rellenar todos los datos.", Toast.LENGTH_SHORT).show();
-                }else if(!diaria.isChecked() && !semanal.isChecked() && !mensual.isChecked()){
+                } else if(!diaria.isChecked() && !semanal.isChecked() && !mensual.isChecked()){
                     Toast.makeText(getApplicationContext(), "Seleccionar diaria, semanal o mensual.", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Task newTask = new Task(
                             nombreActividad.getText().toString().trim(),
                             descripcion.getText().toString().trim(),
@@ -99,9 +99,11 @@ public class TaskForm extends AppCompatActivity {
                             hora.getText().toString().trim());
                     if(diaria.isChecked()){
                         MainActivity.usuarioActual.addTaskDiaria(newTask);
-                    }else if(semanal.isChecked()){
+                    }
+                    if(semanal.isChecked()){
                         MainActivity.usuarioActual.addTaskSemanal(newTask);
-                    }else{
+                    }
+                    if(mensual.isChecked()){
                         MainActivity.usuarioActual.addTaskMensual(newTask);
                     }
                     openOrganis();
