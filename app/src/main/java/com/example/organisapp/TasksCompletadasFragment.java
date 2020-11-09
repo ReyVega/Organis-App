@@ -25,22 +25,23 @@ public class TasksCompletadasFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        Button vaciar = (Button) getView().findViewById(R.id.vaciar);
-        vaciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity.usuarioActual.getCompletadas().clear();
-            }
-        });
-
         ListView lv = (ListView) getView().findViewById(R.id.stCompletadas);
 
-        CustomListAdapter adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getCompletadas());
+        final CustomListAdapter adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getCompletadas());
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 openTaskFormCompletada(position);
+            }
+        });
+
+        Button vaciar = (Button) getView().findViewById(R.id.vaciar);
+        vaciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.usuarioActual.getCompletadas().clear();
+                adapter.notifyDataSetChanged();
             }
         });
     }
