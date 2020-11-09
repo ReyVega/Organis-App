@@ -112,6 +112,13 @@ public class TaskFormModificar extends AppCompatActivity {
         eliminarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
+                    MainActivity.usuarioActual.getDiarias().remove(position);
+                } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("semanal")) {
+                    MainActivity.usuarioActual.getSemanales().remove(position);
+                } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("mensual")) {
+                    MainActivity.usuarioActual.getMensuales().remove(position);
+                }
                 openOrganis();
             }
         });
