@@ -98,31 +98,35 @@ public class TaskFormModificar extends AppCompatActivity {
         modificarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Task ts = new Task(nombreActividad2.getText().toString().trim(),descripcion2.getText().toString().trim(),"Alta",
-                        fechaFinalizacion2.getText().toString().trim(),horaTask2.getText().toString().trim());
-                if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
-                    if(completado.isChecked()) {
-                        MainActivity.usuarioActual.getCompletadas().add(ts);
-                        MainActivity.usuarioActual.getDiarias().remove(position);
-                    } else {
-                        MainActivity.usuarioActual.getDiarias().set(position, ts);
+                if(nombreActividad2.getText().toString().trim().equals("") || descripcion2.getText().toString().trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                } else {
+                    Task ts = new Task(nombreActividad2.getText().toString().trim(),descripcion2.getText().toString().trim(),"Alta",
+                            fechaFinalizacion2.getText().toString().trim(),horaTask2.getText().toString().trim());
+                    if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
+                        if(completado.isChecked()) {
+                            MainActivity.usuarioActual.getCompletadas().add(ts);
+                            MainActivity.usuarioActual.getDiarias().remove(position);
+                        } else {
+                            MainActivity.usuarioActual.getDiarias().set(position, ts);
+                        }
+                    } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("semanal")) {
+                        if(completado.isChecked()) {
+                            MainActivity.usuarioActual.getCompletadas().add(ts);
+                            MainActivity.usuarioActual.getSemanales().remove(position);
+                        } else {
+                            MainActivity.usuarioActual.getSemanales().set(position, ts);
+                        }
+                    } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("mensual")) {
+                        if(completado.isChecked()) {
+                            MainActivity.usuarioActual.getCompletadas().add(ts);
+                            MainActivity.usuarioActual.getMensuales().remove(position);
+                        } else {
+                            MainActivity.usuarioActual.getMensuales().set(position, ts);
+                        }
                     }
-                } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("semanal")) {
-                    if(completado.isChecked()) {
-                        MainActivity.usuarioActual.getCompletadas().add(ts);
-                        MainActivity.usuarioActual.getSemanales().remove(position);
-                    } else {
-                        MainActivity.usuarioActual.getSemanales().set(position, ts);
-                    }
-                } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("mensual")) {
-                    if(completado.isChecked()) {
-                        MainActivity.usuarioActual.getCompletadas().add(ts);
-                        MainActivity.usuarioActual.getMensuales().remove(position);
-                    } else {
-                        MainActivity.usuarioActual.getMensuales().set(position, ts);
-                    }
+                    openOrganis();
                 }
-                openOrganis();
             }
         });
 
