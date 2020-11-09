@@ -11,6 +11,8 @@ public class Usuario {
     private ArrayList<Task> diarias;
     private ArrayList<Task> semanales;
     private ArrayList<Task> mensuales;
+    private ArrayList<Task> completadas;
+
 
     public Usuario(int ID, String nombre, String apellidos, String correo, String contrasena) {
         this.ID = ID;
@@ -21,6 +23,7 @@ public class Usuario {
         this.diarias = new ArrayList<Task>();
         this.semanales = new ArrayList<Task>();
         this.mensuales = new ArrayList<Task>();
+        this.completadas = new ArrayList<Task>();
     }
 
     public int getID() {
@@ -71,9 +74,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public void addTaskDiaria(Task task){diarias.add(task);}
+    public void addTaskDiaria(Task task){this.diarias.add(task);}
 
-    public void addTaskMensual(Task task){mensuales.add(task);}
+    public void addTaskSemanal(Task task){this.semanales.add(task);}
 
-    public void addTaskSemanal(Task task){semanales.add(task);}
+    public void addTaskMensual(Task task){this.mensuales.add(task);}
+
+    public void addTaskCompletada(Task task){this.completadas.add(task);}
+
 }
