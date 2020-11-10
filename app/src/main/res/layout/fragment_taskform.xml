@@ -69,41 +69,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.857" />
 
-    <Switch
-        android:id="@+id/switchMensual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mensual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <Switch
-        android:id="@+id/switchSemanal"
-        android:layout_width="107dp"
-        android:layout_height="19dp"
-        android:text="Semanal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
-
-    <Switch
-        android:id="@+id/switchDiaria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Diaria"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.59" />
-
     <Button
         android:id="@+id/fechaFinalizacion"
         android:layout_width="130dp"
@@ -146,5 +111,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.059" />
+
+    <RadioGroup
+        android:layout_width="358dp"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.586">
+
+        <RadioButton
+            android:id="@+id/radioDiaria"
+            android:layout_width="124dp"
+            android:layout_height="wrap_content"
+            android:text="Diaria" />
+
+        <RadioButton
+            android:id="@+id/radioSemanal"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="Semanal" />
+
+        <RadioButton
+            android:id="@+id/radioMensual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mensual" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

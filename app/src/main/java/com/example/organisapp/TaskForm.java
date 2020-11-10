@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -79,9 +80,9 @@ public class TaskForm extends AppCompatActivity {
             public void onClick(View v) {
                 EditText nombreActividad = (EditText) findViewById(R.id.nombreActividad);
                 EditText descripcion = (EditText) findViewById(R.id.descripcion);
-                Switch diaria = (Switch) findViewById(R.id.switchDiaria);
-                Switch semanal = (Switch) findViewById(R.id.switchSemanal);
-                Switch mensual = (Switch) findViewById(R.id.switchMensual);
+                RadioButton diaria = (RadioButton) findViewById(R.id.radioDiaria);
+                RadioButton semanal = (RadioButton) findViewById(R.id.radioSemanal);
+                RadioButton mensual = (RadioButton) findViewById(R.id.radioMensual);
                 Button hora = (Button) findViewById(R.id.horaTask);
 
                 if(nombreActividad.getText().toString().trim().equals("") ||
@@ -99,11 +100,9 @@ public class TaskForm extends AppCompatActivity {
                             hora.getText().toString().trim());
                     if(diaria.isChecked()){
                         MainActivity.usuarioActual.addTaskDiaria(newTask);
-                    }
-                    if(semanal.isChecked()){
+                    } else if(semanal.isChecked()){
                         MainActivity.usuarioActual.addTaskSemanal(newTask);
-                    }
-                    if(mensual.isChecked()){
+                    }else if(mensual.isChecked()){
                         MainActivity.usuarioActual.addTaskMensual(newTask);
                     }
                     openOrganis();
