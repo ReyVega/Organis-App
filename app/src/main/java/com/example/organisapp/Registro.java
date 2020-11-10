@@ -70,7 +70,7 @@ public class Registro extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "El correo ingresado no es válido", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_LONG).show();
                 }
             }
         });
