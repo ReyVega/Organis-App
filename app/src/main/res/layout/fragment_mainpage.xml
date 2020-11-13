@@ -7,10 +7,24 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/buttonRegistro"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:background="@color/colorPrimary"
+        android:text="Registrarse"
+        android:textColor="#ffff"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/buttonLogin"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="372dp"
+        android:layout_marginBottom="244dp"
         android:background="@color/colorPrimary"
         android:text="Log In"
         android:textColor="#ffff"
@@ -20,32 +34,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/buttonRegistro"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="248dp"
-        android:text="Registrarse"
-        android:textSize="16dp"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffff"
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="212dp"
+        android:layout_marginBottom="328dp"
+        android:src="@drawable/logo_oa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="512dp"
-        android:fontFamily="cursive"
-        android:text="Organis App"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
