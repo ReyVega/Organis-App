@@ -17,7 +17,7 @@
         android:layout_width="85dp"
         android:layout_height="78dp"
         android:contentDescription="@string/nav_header_desc"
-        android:src="@drawable/tableromenu" />
+        android:src="@drawable/menutablero" />
 
     <TextView
         android:layout_width="match_parent"

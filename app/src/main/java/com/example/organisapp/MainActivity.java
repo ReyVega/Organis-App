@@ -22,9 +22,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
     private Button buttonLogin,
-            buttonRegistro;
+                   buttonRegistro;
     public static ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     public static Usuario usuarioActual;
     public static int ID;
