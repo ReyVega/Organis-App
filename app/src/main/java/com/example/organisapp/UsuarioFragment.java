@@ -19,9 +19,18 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.organisapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 import java.util.regex.Pattern;
 
 public class UsuarioFragment extends Fragment {
+
+    private TextView correo;
+    private EditText nombre,
+                     apellidos,
+                     password,
+                     confirmacion;
+    private Button botonModificar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,24 +42,21 @@ public class UsuarioFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        TextView correo = (TextView) getView().findViewById(R.id.correoUsuario);
-        EditText nombre2 = (EditText) getView().findViewById(R.id.nombreModificar);
-        EditText apellidos2 = (EditText) getView().findViewById(R.id.apellidosModificar);
+        this.correo = (TextView) getView().findViewById(R.id.correoUsuario);
+        this.nombre = (EditText) getView().findViewById(R.id.nombreModificar);
+        this.apellidos = (EditText) getView().findViewById(R.id.apellidosModificar);
+        this.password = (EditText) getView().findViewById(R.id.passwordModificar);
+        this.confirmacion = (EditText) getView().findViewById(R.id.confirmacionModificar);
 
-        correo.setText(MainActivity.usuarioActual.getCorreo());
-        nombre2.setText(MainActivity.usuarioActual.getNombre());
-        apellidos2.setText(MainActivity.usuarioActual.getApellidos());
+        this.correo.setText(MainActivity.usuarioActual.getCorreo());
+        this.nombre.setText(MainActivity.usuarioActual.getNombre());
+        this.apellidos.setText(MainActivity.usuarioActual.getApellidos());
 
-        Button botonM = (Button) getView().findViewById(R.id.botonModificar);
+        this.botonModificar = (Button) getView().findViewById(R.id.botonModificar);
 
-        botonM.setOnClickListener(new View.OnClickListener() {
+        this.botonModificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nombre = (EditText) getView().findViewById(R.id.nombreModificar);
-                EditText apellidos = (EditText) getView().findViewById(R.id.apellidosModificar);
-                EditText password = (EditText) getView().findViewById(R.id.passwordModificar);
-                EditText confirmacion = (EditText) getView().findViewById(R.id.confirmacionModificar);
-
                 if(!(nombre.getText().toString().trim().equals("") ||
                         apellidos.getText().toString().trim().equals("") ||
                         password.getText().toString().trim().equals("") ||

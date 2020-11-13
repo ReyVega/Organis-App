@@ -3,14 +3,12 @@ package com.example.organisapp;
 public class Task {
     private String nombreActividad;
     private String descripcion;
-    private String prioridad;
     private String fecha;
     private String hora;
 
-    public Task(String nombreActividad, String descripcion, String prioridad, String fecha, String hora) {
+    public Task(String nombreActividad, String descripcion, String fecha, String hora) {
         this.nombreActividad = nombreActividad;
         this.descripcion = descripcion;
-        this.prioridad = prioridad;
         this.fecha = fecha;
         this.hora = hora;
     }
@@ -29,10 +27,6 @@ public class Task {
         return this.descripcion;
     }
 
-    public String getPrioridad() {
-        return this.prioridad;
-    }
-
     public String getFecha() {
         return this.fecha;
     }
@@ -47,10 +41,6 @@ public class Task {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public void setPrioridad(String prioridad) {
-        this.prioridad = prioridad;
     }
 
     public void setFecha(String fecha) {

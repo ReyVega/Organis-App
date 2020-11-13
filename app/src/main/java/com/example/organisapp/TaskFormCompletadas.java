@@ -17,26 +17,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
 
 public class TaskFormCompletadas extends AppCompatActivity {
+
+    private EditText nombreActividad,
+                     descripcion;
+    private Button fecha,
+                   hora,
+                   guardar,
+                   eliminar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_taskformcompletadas);
         final int position = (int) getIntent().getSerializableExtra("position");
 
-        final EditText nombreActividad = (EditText) findViewById(R.id.nombreActividad3);
-        final EditText descripcion = (EditText) findViewById(R.id.descripcion3);
-        final Button fecha = (Button) findViewById(R.id.fechaFinalizacion3);
-        final Button hora = (Button) findViewById(R.id.horaTask3);
+        this.nombreActividad = (EditText) findViewById(R.id.nombreActividad3);
+        this.descripcion = (EditText) findViewById(R.id.descripcion3);
+        this.fecha = (Button) findViewById(R.id.fechaFinalizacion3);
+        this.hora = (Button) findViewById(R.id.horaTask3);
+        this.guardar = (Button) findViewById(R.id.modificarActividad2);
+        this.eliminar = findViewById(R.id.eliminarActividad2);
 
-        nombreActividad.setText(MainActivity.usuarioActual.getCompletadas().get(position).getNombreActividad());
-        descripcion.setText(MainActivity.usuarioActual.getCompletadas().get(position).getDescripcion());
-        fecha.setText(MainActivity.usuarioActual.getCompletadas().get(position).getFecha());
-        hora.setText(MainActivity.usuarioActual.getCompletadas().get(position).getHora());
 
-        fecha.setOnClickListener(new View.OnClickListener() {
+        this.nombreActividad.setText(MainActivity.usuarioActual.getCompletadas().get(position).getNombreActividad());
+        this.descripcion.setText(MainActivity.usuarioActual.getCompletadas().get(position).getDescripcion());
+        this.fecha.setText(MainActivity.usuarioActual.getCompletadas().get(position).getFecha());
+        this.hora.setText(MainActivity.usuarioActual.getCompletadas().get(position).getHora());
+
+        this.fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button fecha = (Button) findViewById(R.id.fechaFinalizacion3);
                 Calendar c = Calendar.getInstance();
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
@@ -52,10 +61,9 @@ public class TaskFormCompletadas extends AppCompatActivity {
             }
         });
 
-        hora.setOnClickListener(new View.OnClickListener() {
+        this.hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button hora = (Button) findViewById(R.id.horaTask3);
                 Calendar c = Calendar.getInstance();
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
@@ -75,8 +83,7 @@ public class TaskFormCompletadas extends AppCompatActivity {
             }
         });
 
-        Button guardar = (Button) findViewById(R.id.modificarActividad2);
-        guardar.setOnClickListener(new View.OnClickListener() {
+        this.guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(nombreActividad.getText().toString().trim().equals("") || descripcion.getText().toString().trim().equals("")){
@@ -85,7 +92,6 @@ public class TaskFormCompletadas extends AppCompatActivity {
                     Task newTask = new Task(
                             nombreActividad.getText().toString().trim(),
                             descripcion.getText().toString().trim(),
-                            "Alta",
                             fecha.getText().toString().trim(),
                             hora.getText().toString().trim());
                     MainActivity.usuarioActual.getCompletadas().set(position, newTask);
@@ -94,8 +100,7 @@ public class TaskFormCompletadas extends AppCompatActivity {
             }
         });
 
-        Button eliminar = findViewById(R.id.eliminarActividad2);
-        eliminar.setOnClickListener(new View.OnClickListener() {
+        this.eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.usuarioActual.getCompletadas().remove(position);

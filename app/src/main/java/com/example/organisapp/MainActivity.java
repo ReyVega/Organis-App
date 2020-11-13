@@ -34,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mainpage);
 
-        buttonLogin = findViewById(R.id.buttonLogin);
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        this.buttonLogin = findViewById(R.id.buttonLogin);
+        this.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openLogin();
             }
         });
 
-        buttonRegistro = findViewById(R.id.buttonRegistro);
-        buttonRegistro.setOnClickListener(new View.OnClickListener() {
+        this.buttonRegistro = findViewById(R.id.buttonRegistro);
+        this.buttonRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openRegistro();

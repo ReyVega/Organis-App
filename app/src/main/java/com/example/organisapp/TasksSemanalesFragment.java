@@ -22,6 +22,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TasksSemanalesFragment extends Fragment {
 
+    private FloatingActionButton fab;
+    private ListView lv;
+    private CustomListAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,19 +36,19 @@ public class TasksSemanalesFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        FloatingActionButton fab = (FloatingActionButton) getView().findViewById(R.id.fabSemanales);
-        fab.setOnClickListener(new View.OnClickListener() {
+        this.fab = (FloatingActionButton) getView().findViewById(R.id.fabSemanales);
+        this.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openTaskForm();
             }
         });
 
-        ListView lv = (ListView) getView().findViewById(R.id.stSemanales);
+        this.lv = (ListView) getView().findViewById(R.id.stSemanales);
 
-        CustomListAdapter adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getSemanales());
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getSemanales());
+        this.lv.setAdapter(this.adapter);
+        this.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 openTaskFormModificar(position);

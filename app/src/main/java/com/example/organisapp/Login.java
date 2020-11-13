@@ -19,8 +19,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
 
-        buttonOrganis = findViewById(R.id.organisLogin);
-        buttonOrganis.setOnClickListener(new View.OnClickListener() {
+        this.buttonOrganis = findViewById(R.id.organisLogin);
+        this.buttonOrganis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText correo = (EditText) findViewById(R.id.correoLogin);

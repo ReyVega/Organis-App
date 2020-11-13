@@ -15,6 +15,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TasksCompletadasFragment extends Fragment {
+
+    private  ListView lv;
+    private CustomListAdapter adapter;
+    private Button vaciar;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_taskscompletadas, container, false);
@@ -25,19 +30,19 @@ public class TasksCompletadasFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        ListView lv = (ListView) getView().findViewById(R.id.stCompletadas);
+        this.lv = (ListView) getView().findViewById(R.id.stCompletadas);
 
-        final CustomListAdapter adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getCompletadas());
-        lv.setAdapter(adapter);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.adapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.custom_view, MainActivity.usuarioActual.getCompletadas());
+        this.lv.setAdapter(this.adapter);
+        this.lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 openTaskFormCompletada(position);
             }
         });
 
-        Button vaciar = (Button) getView().findViewById(R.id.vaciar);
-        vaciar.setOnClickListener(new View.OnClickListener() {
+        this.vaciar = (Button) getView().findViewById(R.id.vaciar);
+        this.vaciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivity.usuarioActual.getCompletadas().clear();

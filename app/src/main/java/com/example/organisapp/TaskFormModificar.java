@@ -22,23 +22,32 @@ import java.util.Calendar;
 
 public class TaskFormModificar extends AppCompatActivity {
 
+    private EditText nombreActividad,
+                     descripcion;
+    private Button fechaFinalizacion,
+                   horaTask,
+                   modificarActividad,
+                   eliminarActividad;
+    private CheckBox completado;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_taskformmodificar);
 
-        final EditText nombreActividad2 = (EditText) findViewById(R.id.nombreActividad2);
-        final EditText descripcion2 = (EditText) findViewById(R.id.descripcion2);
-        final Button fechaFinalizacion2 = (Button) findViewById(R.id.fechaFinalizacion2);
-        final Button horaTask2 = (Button) findViewById(R.id.horaTask2);
-        Button modificarActividad = (Button) findViewById(R.id.modificarActividad);
-        Button eliminarActividad = (Button) findViewById(R.id.eliminarActividad);
-        final CheckBox completado = (CheckBox) findViewById(R.id.taskCompletada2);
+        final int position = (int) getIntent().getSerializableExtra("position");
+        this.nombreActividad = (EditText) findViewById(R.id.nombreActividad2);
+        this.descripcion = (EditText) findViewById(R.id.descripcion2);
+        this.fechaFinalizacion = (Button) findViewById(R.id.fechaFinalizacion2);
+        this.horaTask = (Button) findViewById(R.id.horaTask2);
+        this.modificarActividad = (Button) findViewById(R.id.modificarActividad);
+        this.eliminarActividad = (Button) findViewById(R.id.eliminarActividad);
+        this.completado = (CheckBox) findViewById(R.id.taskCompletada2);
 
-        fechaFinalizacion2.setOnClickListener(new View.OnClickListener() {
+        this.fechaFinalizacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button fecha = (Button) findViewById(R.id.fechaFinalizacion);
                 Calendar c = Calendar.getInstance();
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
@@ -47,17 +56,16 @@ public class TaskFormModificar extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int day) {
-                                fechaFinalizacion2.setText(day + "/" + month + "/" + year);
+                                fechaFinalizacion.setText(day + "/" + month + "/" + year);
                             }
                         }, year, month, day);
                 dp.show();;
             }
         });
 
-        horaTask2.setOnClickListener(new View.OnClickListener() {
+        this.horaTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button hora = (Button) findViewById(R.id.horaTask);
                 Calendar c = Calendar.getInstance();
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
@@ -67,9 +75,9 @@ public class TaskFormModificar extends AppCompatActivity {
                             @Override
                             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                                 if(minute < 10) {
-                                    horaTask2.setText(hourOfDay + ":0" + minute);
+                                    horaTask.setText(hourOfDay + ":0" + minute);
                                 } else {
-                                    horaTask2.setText(hourOfDay + ":" + minute);
+                                    horaTask.setText(hourOfDay + ":" + minute);
                                 }
                             }
                         }, hour,minute,android.text.format.DateFormat.is24HourFormat(TaskFormModificar.this));
@@ -77,32 +85,31 @@ public class TaskFormModificar extends AppCompatActivity {
             }
         });
 
-        final int position = (int) getIntent().getSerializableExtra("position");
         if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
-            nombreActividad2.setText(MainActivity.usuarioActual.getDiarias().get(position).getNombreActividad());
-            descripcion2.setText(MainActivity.usuarioActual.getDiarias().get(position).getDescripcion());
-            fechaFinalizacion2.setText(MainActivity.usuarioActual.getDiarias().get(position).getFecha());
-            horaTask2.setText(MainActivity.usuarioActual.getDiarias().get(position).getHora());
+            this.nombreActividad.setText(MainActivity.usuarioActual.getDiarias().get(position).getNombreActividad());
+            this.descripcion.setText(MainActivity.usuarioActual.getDiarias().get(position).getDescripcion());
+            this.fechaFinalizacion.setText(MainActivity.usuarioActual.getDiarias().get(position).getFecha());
+            this.horaTask.setText(MainActivity.usuarioActual.getDiarias().get(position).getHora());
         } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("semanal")) {
-            nombreActividad2.setText(MainActivity.usuarioActual.getSemanales().get(position).getNombreActividad());
-            descripcion2.setText(MainActivity.usuarioActual.getSemanales().get(position).getDescripcion());
-            fechaFinalizacion2.setText(MainActivity.usuarioActual.getSemanales().get(position).getFecha());
-            horaTask2.setText(MainActivity.usuarioActual.getSemanales().get(position).getHora());
+            this.nombreActividad.setText(MainActivity.usuarioActual.getSemanales().get(position).getNombreActividad());
+            this.descripcion.setText(MainActivity.usuarioActual.getSemanales().get(position).getDescripcion());
+            this.fechaFinalizacion.setText(MainActivity.usuarioActual.getSemanales().get(position).getFecha());
+            this.horaTask.setText(MainActivity.usuarioActual.getSemanales().get(position).getHora());
         } else if(((String) getIntent().getSerializableExtra("tipoTask")).equals("mensual")) {
-            nombreActividad2.setText(MainActivity.usuarioActual.getMensuales().get(position).getNombreActividad());
-            descripcion2.setText(MainActivity.usuarioActual.getMensuales().get(position).getDescripcion());
-            fechaFinalizacion2.setText(MainActivity.usuarioActual.getMensuales().get(position).getFecha());
-            horaTask2.setText(MainActivity.usuarioActual.getMensuales().get(position).getHora());
+            this.nombreActividad.setText(MainActivity.usuarioActual.getMensuales().get(position).getNombreActividad());
+            this.descripcion.setText(MainActivity.usuarioActual.getMensuales().get(position).getDescripcion());
+            this.fechaFinalizacion.setText(MainActivity.usuarioActual.getMensuales().get(position).getFecha());
+            this.horaTask.setText(MainActivity.usuarioActual.getMensuales().get(position).getHora());
         }
 
-        modificarActividad.setOnClickListener(new View.OnClickListener() {
+        this.modificarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(nombreActividad2.getText().toString().trim().equals("") || descripcion2.getText().toString().trim().equals("")) {
+                if(nombreActividad.getText().toString().trim().equals("") || descripcion.getText().toString().trim().equals("")) {
                     Toast.makeText(getApplicationContext(), "Rellenar todos los campos", Toast.LENGTH_SHORT).show();
                 } else {
-                    Task ts = new Task(nombreActividad2.getText().toString().trim(),descripcion2.getText().toString().trim(),"Alta",
-                            fechaFinalizacion2.getText().toString().trim(),horaTask2.getText().toString().trim());
+                    Task ts = new Task(nombreActividad.getText().toString().trim(),descripcion.getText().toString().trim(),
+                            fechaFinalizacion.getText().toString().trim(),horaTask.getText().toString().trim());
                     if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {
                         if(completado.isChecked()) {
                             MainActivity.usuarioActual.getCompletadas().add(ts);
@@ -130,7 +137,7 @@ public class TaskFormModificar extends AppCompatActivity {
             }
         });
 
-        eliminarActividad.setOnClickListener(new View.OnClickListener() {
+        this.eliminarActividad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(((String) getIntent().getSerializableExtra("tipoTask")).equals("diaria")) {

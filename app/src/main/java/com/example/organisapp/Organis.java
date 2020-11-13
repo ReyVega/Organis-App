@@ -33,7 +33,7 @@ public class Organis extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        this.mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_usuario, R.id.nav_tasksDiarias, R.id.nav_tasksSemanales, R.id.nav_tasksMensuales, R.id.nav_tasksCompletadas,R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();

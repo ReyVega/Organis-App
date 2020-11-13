@@ -14,21 +14,27 @@ import java.util.regex.Pattern;
 public class Registro extends AppCompatActivity {
 
     private Button buttonOrganis;
+    private EditText nombre,
+                     apellidos,
+                     correo,
+                     password,
+                     confirmacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_registro);
-        buttonOrganis = findViewById(R.id.organisRegistro);
-        buttonOrganis.setOnClickListener(new View.OnClickListener() {
+
+        this.buttonOrganis = findViewById(R.id.organisRegistro);
+        this.nombre = (EditText) findViewById(R.id.nombreRegistro);
+        this.apellidos = (EditText) findViewById(R.id.apellidosRegistro);
+        this.correo = (EditText) findViewById(R.id.correoRegistro);
+        this.password = (EditText) findViewById(R.id.passwordRegistro);
+        this.confirmacion = (EditText) findViewById(R.id.confirmacionRegistro);
+
+        this.buttonOrganis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nombre = (EditText) findViewById(R.id.nombreRegistro);
-                EditText apellidos = (EditText) findViewById(R.id.apellidosRegistro);
-                EditText correo = (EditText) findViewById(R.id.correoRegistro);
-                EditText password = (EditText) findViewById(R.id.passwordRegistro);
-                EditText confirmacion = (EditText) findViewById(R.id.confirmacionRegistro);
-
                 if(!(nombre.getText().toString().trim().equals("") ||
                         apellidos.getText().toString().trim().equals("") ||
                         correo.getText().toString().trim().equals("") ||

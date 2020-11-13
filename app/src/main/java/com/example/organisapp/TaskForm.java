@@ -22,19 +22,36 @@ import java.util.Calendar;
 
 public class TaskForm extends AppCompatActivity {
 
-    private Button anadir;
+    private EditText nombreActividad,
+                     descripcion;
 
+    private Button anadir,
+                   fecha,
+                   hora,
+                   cancelar;
+
+    private RadioButton diaria,
+                        semanal,
+                        mensual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_taskform);
 
-        final Button fecha = (Button) findViewById(R.id.fechaFinalizacion);
+        this.fecha = (Button) findViewById(R.id.fechaFinalizacion);
+        this.hora = (Button) findViewById(R.id.horaTask);
+        this.anadir = findViewById(R.id.anadirActividad);
+        this.cancelar = findViewById(R.id.cancelar);
+        this.nombreActividad = (EditText) findViewById(R.id.nombreActividad);
+        this.descripcion = (EditText) findViewById(R.id.descripcion);
+        this.diaria = (RadioButton) findViewById(R.id.radioDiaria);
+        this.semanal = (RadioButton) findViewById(R.id.radioSemanal);
+        this.mensual = (RadioButton) findViewById(R.id.radioMensual);
+        this.hora = (Button) findViewById(R.id.horaTask);
 
-        fecha.setOnClickListener(new View.OnClickListener() {
+        this.fecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button fecha = (Button) findViewById(R.id.fechaFinalizacion);
                 Calendar c = Calendar.getInstance();
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 int month = c.get(Calendar.MONTH);
@@ -46,15 +63,13 @@ public class TaskForm extends AppCompatActivity {
                                 fecha.setText(day + "/" + month + "/" + year);
                             }
                         }, year, month, day);
-                dp.show();;
+                dp.show();
             }
         });
 
-        final Button hora = (Button) findViewById(R.id.horaTask);
-        hora.setOnClickListener(new View.OnClickListener() {
+        this.hora.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Button hora = (Button) findViewById(R.id.horaTask);
                 Calendar c = Calendar.getInstance();
                 int hour = c.get(Calendar.HOUR_OF_DAY);
                 int minute = c.get(Calendar.MINUTE);
@@ -74,17 +89,9 @@ public class TaskForm extends AppCompatActivity {
             }
         });
 
-        this.anadir = findViewById(R.id.anadirActividad);
         this.anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nombreActividad = (EditText) findViewById(R.id.nombreActividad);
-                EditText descripcion = (EditText) findViewById(R.id.descripcion);
-                RadioButton diaria = (RadioButton) findViewById(R.id.radioDiaria);
-                RadioButton semanal = (RadioButton) findViewById(R.id.radioSemanal);
-                RadioButton mensual = (RadioButton) findViewById(R.id.radioMensual);
-                Button hora = (Button) findViewById(R.id.horaTask);
-
                 if(nombreActividad.getText().toString().trim().equals("") ||
                    descripcion.getText().toString().trim().equals("") ||
                    fecha.getText().toString().trim().equals("Fecha de finalización") || hora.getText().toString().trim().equals("Hora")){
@@ -95,7 +102,6 @@ public class TaskForm extends AppCompatActivity {
                     Task newTask = new Task(
                             nombreActividad.getText().toString().trim(),
                             descripcion.getText().toString().trim(),
-                            "Alta",
                             fecha.getText().toString().trim(),
                             hora.getText().toString().trim());
                     if(diaria.isChecked()){
@@ -110,8 +116,7 @@ public class TaskForm extends AppCompatActivity {
             }
         });
 
-        Button cancelar = findViewById(R.id.cancelar);
-        cancelar.setOnClickListener(new View.OnClickListener() {
+        this.cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openOrganis();
