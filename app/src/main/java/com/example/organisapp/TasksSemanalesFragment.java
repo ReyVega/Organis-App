@@ -6,23 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.organisapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TasksSemanalesFragment extends Fragment {
 
-    private FloatingActionButton fab;
+    private FloatingActionButton fabSemanales;
     private ListView lv;
     private CustomListAdapter adapter;
 
@@ -36,8 +29,8 @@ public class TasksSemanalesFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
-        this.fab = (FloatingActionButton) getView().findViewById(R.id.fabSemanales);
-        this.fab.setOnClickListener(new View.OnClickListener() {
+        this.fabSemanales = (FloatingActionButton) getView().findViewById(R.id.fabSemanales);
+        this.fabSemanales.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openTaskForm();
